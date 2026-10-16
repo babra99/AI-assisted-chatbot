@@ -1,0 +1,334 @@
+.chat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.chat__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.chat__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.chat__back {
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.chat__back:hover {
+  color: var(--text-h);
+  border-color: var(--accent-border);
+}
+
+.chat__back:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- Messages area --- */
+
+.chat__messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chat__empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* --- Message bubbles --- */
+
+.msg {
+  max-width: 85%;
+  padding: 0.6rem 0.85rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+.msg--user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.msg--assistant {
+  align-self: flex-start;
+  background: var(--accent-bg);
+  color: var(--text-h);
+  border: 1px solid var(--accent-border);
+  border-bottom-left-radius: 4px;
+}
+
+/* --- Appointment card --- */
+
+.appt-card {
+  margin-top: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-size: 0.85rem;
+}
+
+.appt-card__title {
+  font-weight: 600;
+  color: var(--text-h);
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.appt-card__row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+}
+
+.appt-card__label {
+  color: var(--text);
+}
+
+.appt-card__value {
+  color: var(--text-h);
+  font-family: var(--mono);
+  font-size: 0.825rem;
+}
+
+.appt-card__value--missing {
+  color: var(--text);
+  font-style: italic;
+  font-family: var(--sans);
+}
+
+.appt-card--ready {
+  border-color: #15803d;
+  background: rgba(21, 128, 61, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  .appt-card--ready {
+    border-color: #4ade80;
+    background: rgba(74, 222, 128, 0.08);
+  }
+}
+
+.appt-card__confirm {
+  margin-top: 0.5rem;
+  width: 100%;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: none;
+  background: #15803d;
+  color: #fff;
+}
+
+.appt-card__confirm:hover {
+  filter: brightness(1.1);
+}
+
+.appt-card__confirm:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .appt-card__confirm {
+    background: #16a34a;
+  }
+}
+
+/* --- Thinking indicator --- */
+
+.chat__thinking {
+  align-self: flex-start;
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.7rem 1rem;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+  border-bottom-left-radius: 4px;
+}
+
+.chat__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: dot-pulse 1.2s ease-in-out infinite;
+}
+
+.chat__dot:nth-child(2) { animation-delay: 0.15s; }
+.chat__dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes dot-pulse {
+  0%, 60%, 100% { opacity: 0.3; transform: scale(0.85); }
+  30% { opacity: 1; transform: scale(1); }
+}
+
+/* --- Error banner --- */
+
+.chat__error {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0 1.5rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: rgba(185, 28, 28, 0.08);
+  color: #b91c1c;
+  border: 1px solid rgba(185, 28, 28, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .chat__error {
+    background: rgba(248, 113, 113, 0.1);
+    color: #f87171;
+    border-color: rgba(248, 113, 113, 0.2);
+  }
+}
+
+.chat__error-text {
+  flex: 1;
+}
+
+.chat__retry {
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.chat__retry:hover {
+  filter: brightness(1.15);
+}
+
+.chat__retry:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --- Input area --- */
+
+.chat__input-area {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.chat__input {
+  flex: 1;
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.625rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-h);
+  resize: none;
+}
+
+.chat__input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.chat__input:disabled {
+  opacity: 0.6;
+}
+
+.chat__send {
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.chat__send:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.chat__send:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.chat__send:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* --- Init loading / error --- */
+
+.chat__init {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.chat__init-error {
+  color: #b91c1c;
+  text-align: center;
+  line-height: 1.45;
+}
+
+@media (prefers-color-scheme: dark) {
+  .chat__init-error {
+    color: #f87171;
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "ai-assisted-chatbot",
+  "private": true,
+  "version": "0.0.1",
+  "description": "AI-assisted appointment booking — Full Stack assessment",
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "build": "npm run build --prefix server && npm run build --prefix client",
+    "build:server": "npm run build --prefix server",
+    "build:client": "npm run build --prefix client",
+    "db:init": "npm run db:init --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
